@@ -7,10 +7,63 @@
 </head>
 <body>
 
-    <h1>Fala meu amigo {{ firstname }}</h1>
+    <h1>Fala men {{firstname}} </h1>
+    
+    
+
+    <ul>
+        {% for x in mymembers %}
+        <li> {{x.firstname}}</li>
+        {%empty%}
+            <li>Tem niguem ainda  em casa</li>
+        {% endfor %}
+    </ul>
+    
+    <ul>
+        {% for x in mymembers reversed %}
+        <li> {{x.firstname}}</li>
+        {% endfor %}
+    </ul>
 
 
-    <p>Na views.py voce consegue ver oque o a variavel fruits se parece</p>
+    {% if greeting == 1 %}
+        <h1>Hello shits</h1>
+    {% else %}
+        <h1>Falou men, mete o pe</h1>
+        {% endif %}
+        
+        <ul>
+            {% for x in mymembers %}
+            <li>{{forloop.counter}}  {{x.firstname}}</li>
+            {%endfor%}
+        </ul>
+        
+        {%include 'mymenu.html' with eu="Gabrielzi de cria" responsavel="W3 ta fazendo a boa" %}
+    <ul>
+        {% for x in mymembers%}
+        <li
+            {% if forloop.first%}
+                style="background-color: lightblue;
+                "
+            {%elif  forloop.last%}
+                style="background-color: red;"
+            >{% endif %} 
+                {{x.firstname}}</li>
+            <!-- forloop.first verifica se é a primeira iteração do loop -->
+        {%endfor%}        
+    </ul>
+    <h1>
+        {% comment  "fala cambada estou testando os comantarios dessa paradinha do django"%}
+        {% endcomment %}
+        {#esse aqui tambem server como comentario#}
+    </h1>
+
+
+    <p>Atenção não posso dar espaco quando vou atribuir o valor da variavel no meu template se não da erro</p>
+
+
+    {%include 'footer.html'%}
+
 
 </body>
 </html>
