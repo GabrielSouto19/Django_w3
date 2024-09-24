@@ -1,5 +1,6 @@
 from django.db import models
 
+#user e senha do django dmin é : user : Gabriel , senha : gabriel123
 class Member(models.Model):
     firstname = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
