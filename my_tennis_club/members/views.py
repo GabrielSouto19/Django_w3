@@ -33,3 +33,11 @@ def testing(request):
     }
 
     return HttpResponse(template.render(context,request))
+
+def testando(request):
+    mydata = Member.objects.all()
+    template = loader.get_template("template.html")
+    context = {
+        "mymembers":mydata
+    }
+    return HttpResponse(template.render(context,request))
