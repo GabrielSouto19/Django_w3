@@ -39,10 +39,14 @@ def testando(request):
     mydata = Member.objects.filter(Q(firstname='Emil') | Q(firstname='Tobias')).values()
     comeca_com_l = Member.objects.filter(firstname__startswith="L").values()
     termina_com_l = Member.objects.filter(firstname__endswith="L").values()
+    ordenando_consultas = Member.objects.all().order_by("firstname").values()
+    ordenando_consultas_reverso = Member.objects.all().order_by("-firstname").values()
     template = loader.get_template('template2.html')
     context = {
         'mymembers': mydata,
         "comeca_com_l":comeca_com_l,
-        "termina_com_l":termina_com_l
+        "termina_com_l":termina_com_l,
+        "ordenando_consultas":ordenando_consultas,
+        "ordenando_consultas_reverso":ordenando_consultas_reverso,
     }
     return HttpResponse(template.render(context, request))

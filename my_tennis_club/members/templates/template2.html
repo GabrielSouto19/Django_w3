@@ -1,16 +1,33 @@
+
+{% load static %}
+{% extends "master.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'myglobal.css'%}">
     <title>Document</title>
+    
+    
 </head>
 <body>
+    <p>atenção para carregar o arquivo css o load tem que ficar primeiro</p>
     <h1>Teste de consultas</h1>
     {{comeca_com_l}}
     {{termina_com_l}}
+
+    {{ordenando_consultas}}
+    <h1>Ordenando as consultas </h1>
+
     <ul>
-        {% for x in mymembers %}
+        {% for x in ordenando_consultas %}
+            <li>{{x.firstname}} {{x.lastname}} {{x.phone}} {{x.joined_date}}</li>
+        {% endfor %}
+    </ul>
+    <h1>Ordenando as consultas reversamente</h1>
+    <ul>
+        {% for x in ordenando_consultas_reverso %}
             <li>{{x.firstname}} {{x.lastname}} {{x.phone}} {{x.joined_date}}</li>
         {% endfor %}
     </ul>
