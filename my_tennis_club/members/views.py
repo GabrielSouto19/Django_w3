@@ -36,11 +36,13 @@ def testing(request):
     return HttpResponse(template.render(context,request))
 
 def testando(request):
-    mydata = Member.objects.filter(firstname = "Gabriel").values() | Member.objects.filter(firstname = "Tobias").values()
-
-    template = loader.get_template("template2.html")
+    mydata = Member.objects.filter(Q(firstname='Emil') | Q(firstname='Tobias')).values()
+    comeca_com_l = Member.objects.filter(firstname__startswith="L").values()
+    termina_com_l = Member.objects.filter(firstname__endswith="L").values()
+    template = loader.get_template('template2.html')
     context = {
-        "mymembers":mydata
+        'mymembers': mydata,
+        "comeca_com_l":comeca_com_l,
+        "termina_com_l":termina_com_l
     }
-
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context, request))
