@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.template import loader
 from .models import Member
+from django.db.models import Q
 
 def members(request):
     mymembers = Member.objects.all().values()
@@ -35,9 +36,11 @@ def testing(request):
     return HttpResponse(template.render(context,request))
 
 def testando(request):
-    mydata = Member.objects.all()
-    template = loader.get_template("template.html")
+    mydata = Member.objects.filter(firstname = "Gabriel").values() | Member.objects.filter(firstname = "Tobias").values()
+
+    template = loader.get_template("template2.html")
     context = {
         "mymembers":mydata
     }
+
     return HttpResponse(template.render(context,request))

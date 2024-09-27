@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Teste de consultas</h1>
+
+    <ul>
+        {% for x in mymembers %}
+            <li>{{x.firstname}} {{x.lastname}} {{x.phone}} {{x.joined_date}}</li>
+        {% endfor %}
+    </ul>
+
+    <p>O valor esta contido dentro da chave então sempre tratamos a chave para fazer qualquer coisa 
+
+    </p>
+    
+</body>
+</html>
